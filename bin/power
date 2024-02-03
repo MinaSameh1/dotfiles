@@ -1,0 +1,14 @@
+#!/bin/sh
+
+Choices="Shutdown\nRestart\nSuspend\nHibernate\nHybrid-Sleep\ncancel"
+
+choice=$( echo -e "$Choices" | dmenu -i )
+
+case choice in
+	Shutdown)poweroff ;;
+	Restart)reboot ;;
+	Suspend)sudo systemctl suspend ;;
+	Hibernate)sudo systemctl hibernate ;;
+	Hybrid-Sleep)sudo systemctl hybrid-sleep ;;
+	cancel) shutdown -c ;;
+esac

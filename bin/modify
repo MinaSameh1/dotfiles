@@ -1,0 +1,79 @@
+#!/bin/fish
+
+# This script is to make things easier for me to config :V
+
+set Choices .vimrc \
+    nvim \
+    .bashrc \
+    .bash_profile \
+    fish \
+    tmux \
+    screenrc \
+    .Xdefaults \
+    .xinitrc \
+    .Xresources \
+    dwm-config \
+    dwm.c \
+    st-config \
+    cava \
+    compton \
+    rangerrc \
+    statusbar \
+    sxhkd \
+    README \
+    ncmpcpp \
+    modify
+
+
+set ChoicesToChoose ""
+for i in $Choices
+    set ChoicesToChoose $ChoicesToChoose"$i\n"
+end
+
+set choice (echo -e "$ChoicesToChoose" | dmenu -p "Choose a file to edit")
+
+switch "$choice"
+    case .vimrc
+        $TERM -e "$EDITOR" ~/.vimrc
+    case nvim
+        $TERM -e "$EDITOR" ~/.config/nvim/.
+    case .bashrc
+        $TERM -e "$EDITOR" ~/.bashrc
+    case .bash_profile
+        $TERM -e "$EDITOR" ~/.bash_profile
+    case fish
+        $TERM -e "$EDITOR" ~/.config/fish/.
+    case tmux
+        $TERM -e "$EDITOR" ~/.tmux.conf
+    case screenrc
+        $TERM -e "$EDITOR" ~/.screenrc
+    case .Xdefaults
+        $TERM -e "$EDITOR" ~/.Xdefaults
+    case .xinitrc
+        $TERM -e "$EDITOR" ~/.xinitrc
+    case .Xresources
+        $TERM -e "$EDITOR" ~/.Xresources
+    case dwm-config
+        $TERM -e "$EDITOR" ~/dwm/config.h
+    case dwm.c
+        $TERM -e "$EDITOR" ~/dwm/dwm.c
+    case st-config
+        $TERM -e "$EDITOR" ~/st/config.h
+    case cava
+        $TERM -e "$EDITOR" ~/.config/cava/config
+    case compton
+        $TERM -e "$EDITOR" ~/.config/compton/compton.conf
+    case rangerrc
+        $TERM -e "$EDITOR" ~/.config/ranger/rc.conf
+    case statusbar
+        $TERM -e "$EDITOR" ~/bin/statusbar
+    case sxhkd
+        $TERM -e "$EDITOR" ~/.config/sxhkd/sxhkdrc
+    case README
+        $TERM -e "$EDITOR" ~/Documents/stuff/git/dotfiles/README.md
+    case ncmpcpp
+        $TERM -e "$EDITOR" ~/.config/ncmpcpp/config
+    case modify
+        $TERM -e "$EDITOR" ~/bin/modify
+    case '*' echo "Invalid choice"
+end

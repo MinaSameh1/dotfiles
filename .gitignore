@@ -1,0 +1,13 @@
+.config/fish/completions
+.config/fish/conf.d
+.config/fish/functions
+.config/fish/fish_variables
+.config/fish/fishd.*
+
+
+*.log 
+*.log.*
+*.log/*.*
+
+*.tmp
+*.temp

@@ -1,0 +1,8 @@
+# Keep this file for future reference
+[Unit]
+Description= Auto update DNS
+
+[Service]
+Type= simple
+
+ExecStart= /home/server/bin/dynamicDns.sh

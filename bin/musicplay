@@ -1,0 +1,17 @@
+#!/bin/bash
+ 
+STATUS=$(mpc status | awk '/play/ { print $1 }')
+
+if [[ $STATUS == "[playing]" ]]
+then
+	play=1
+else 
+	play=0
+fi
+
+if [ $play -eq 1 ]
+then
+	mpc pause
+else
+	mpc play
+fi

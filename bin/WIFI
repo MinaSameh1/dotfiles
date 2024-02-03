@@ -1,0 +1,8 @@
+#!/bin/sh
+
+CONFIG_FILE=$(find $HOME/.config/wifi/ | dmenu -i -p "Wifi Config File:")
+SUDO_ASKPASS=$HOME/bin/dmenu_pass sudo -A "$(dmenu_pass | )"
+
+sudo wpa_supplicant -B -i wlp5s0b1 -c "$CONFIG_FILE" && sudo dhcpcd
+
+notify-send "Wifi" "Using $CONFIG_FILE"

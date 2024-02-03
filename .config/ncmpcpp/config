@@ -1,0 +1,183 @@
+## ncmpcpp config file, I mostly grabbed these off the internet 
+# why bother editing lots of lines when you can slap them all together! 
+# joking aside I never found the need to change anything in here :V 
+
+# Files
+ mpd_music_dir = "~/Music"  
+ lyrics_directory  = ~/.ncmpcpp/lyrics
+ ncmpcpp_directory  = ~/.ncmpcpp
+ mpd_host = "localhost"
+ mpd_port = "6600"  
+ mpd_connection_timeout = "5"  
+ mpd_crossfade_time = "5"  
+
+ # Playlist
+ playlist_disable_highlight_delay = "0"  
+ playlist_display_mode = "columns"  
+ playlist_show_remaining_time = "yes"
+
+ browser_display_mode = "columns"  
+ autocenter_mode = "yes"  
+ fancy_scrolling = "yes"  
+ follow_now_playing_lyrics = "yes"  
+ display_screens_numbers_on_start = "yes"  
+ ignore_leading_the = "yes"  
+ lyrics_database = "1"  
+ #song_columns_list_format = "(10)[blue]{l} (30)[green]{a} (30)[magenta]{b} (50)[yellow]{t}"  
+ colors_enabled = "yes"  
+ main_window_color = "white"  
+ main_window_highlight_color =  "yellow"
+ header_window_color = "cyan"  
+ volume_color = "red"  
+ progressbar_color = "cyan"  
+ statusbar_color = "white"  
+ active_column_color = "cyan"  
+ active_window_border = "blue"
+
+alternative_header_first_line_format = "$0$aqqu$/a {$7%a - $9}{$5%t$9}|{$8%f$9} $0$atqq$/a$9"
+alternative_header_second_line_format = "{{$6%b$9}{ [$6%y$9]}}|{%D}"
+#song_list_format = "{$3%n │ $9}{$7%a - $9}{$5%t$9}|{$8%f$9}$R{$6 │ %b$9}{$3 │ %l$9}"
+user_interface = "alternative"
+#user_interface = "classic"
+default_place_to_search_in = "database"
+
+
+# visualizer
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+#visualizer_sync_interval = "12" #DEPRECATED
+# visualizer_type = "wave" (spectrum/wave)
+visualizer_type = "spectrum" (spectrum/wave)
+visualizer_in_stereo = "yes"
+# visualizer_look = "+|"
+# visualizer_look = "┃┃"
+# visualizer_look = ●┃
+# visualizer_look = ●|
+ visualizer_look = *K
+# visualizer_look = "█┇"
+
+## Navigation ##
+cyclic_scrolling = "yes"
+header_text_scrolling = "yes"
+jump_to_now_playing_song_at_start = "yes"
+lines_scrolled = "2"
+startup_screen = "playlist"
+# Comment this line to avoid the splitting screen thingy! 
+#startup_slave_screen = "visualizer"
+locked_screen_width_part = 50
+ask_for_locked_screen_width_part = no
+song_list_format = "$5· $5{%a}|{%D}$5 · $5%t $R $5%l"
+song_status_format = "{{%a{ $6·$9 %b{, %y}} $6·$9 }{%t$/b}}|{$b%f$/b}"
+song_library_format = {{%a - %t} (%b)}|{%f}
+playlist_display_mode = classic
+autocenter_mode = yes
+
+## Other ##
+system_encoding = "utf-8"
+regular_expressions = "extended"
+
+##### song format #####
+##
+## for song format you can use:
+##
+## %l - length
+## %f - short filename
+## %F - full filename
+## %a - artist
+## %t - title
+## %b - album
+## %y - year
+## %n - track number
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## %r - begin right align
+##
+## you can also put them in { } and then it will be displayed
+## only if all requested values are available and/or define alternate
+## value with { }|{ } eg. {%a - %t}|{%f}
+##
+## text can also have different color than the main window has,
+## eg. if you want length to be green, write $3%l$9
+##
+## available values:
+##
+## - 0 - default window color
+## - 1 - black
+## - 2 - red
+## - 4 - green
+## - 4 - yellow
+## - 5 - blue
+## - 6 - magenta
+## - 7 - cyan
+## - 8 - white
+## - 9 - end of current color
+##
+## Note: colors can be nested.
+
+## Selected tracks ##
+selected_item_prefix = "* "
+discard_colors_if_item_is_selected = "no"
+
+## Seeking ##
+incremental_seeking = "yes"
+seek_time = "1"
+
+## Visivility ##
+header_visibility = "yes"
+statusbar_visibility = "yes"
+titles_visibility = "yes"
+
+
+#progressbar_look =  "─>╶"
+#progressbar_look = "___"
+#progressbar_look = "─╼ "
+#progressbar_look = "■  "
+#progressbar_look = "─- "
+#progressbar_look = "▒▒░"
+#progressbar_look = "▒▓░"
+#progressbar_look = "┅┅┄"
+progressbar_look = "─⊙┄"
+#progressbar_look = "─➞─"
+#progressbar_look = "─┅─"
+#progressbar_look = "▪▪▪"
+#progressbar_look = "▪▪▫"
+#progressbar_look = "───"
+#progressbar_look = "▁▁▁"
+#progressbar_look = "‒‒‒"
+#progressbar_look = "▶ "
+#progressbar_look = "◈◆◇"
+#progressbar_look = "■◣ "
+#progressbar_look = "≈►·"
+#progressbar_look = "▃▃▃"
+#progressbar_look = "○•·"
+#progressbar_look = "───"
+#progressbar_look = "─╼·"
+#progressbar_look = "▤▦"
+#progressbar_look = "━■━"
+#progressbar_look = "━|━"
+progressbar_color = "black"
+progressbar_elapsed_color = "white"
+
+now_playing_prefix = "> "
+#song_status_format = " $2%a $4⟫$3⟫ $8%t $4⟫$3⟫ $5%b "
+#autocenter_mode = "yes"
+centered_cursor = "yes"
+
+# Misc
+display_bitrate = "yes"
+# enable_window_title = "no"
+follow_now_playing_lyrics = "yes"
+ignore_leading_the = "yes"
+empty_tag_marker = ""
+
+# External Editor
+external_editor = "vim"
+# (set to yes, if your editor is console app)
+use_console_editor = "yes"
+allow_for_physical_item_deletion = "yes"
+
+# Notify on song change
+execute_on_song_change = notify-send -t 5000 "Now Playing ♫" "$(mpc current)"

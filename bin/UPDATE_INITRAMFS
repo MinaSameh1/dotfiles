@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /usr/src/initramfs
+find . | cpio -H newc -o > ../initramfs.cpio
+cat ../initramfs.cpio | gzip > /boot/custom-initramfs.igz

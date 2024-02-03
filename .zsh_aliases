@@ -1,0 +1,65 @@
+# Switch audio output, had a problem only those worded now I use pavucontrol
+#alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
+#alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
+# Tmux killall and kill window command
+alias tkill='tmux kill-server'
+alias tend='tmux kill-session'
+# Youtube viwer and youtube dl stuff
+alias YT='youtube-viewer'
+alias DL='youtube-dl'
+alias DM='youtube-dl -f bestaudio'
+alias ls='ls --color=auto'
+# aliases for quickly using commands
+alias r='ranger'
+alias v='nvim'
+# For void systems
+#alias vim='vim-huge'
+alias m='ncmpcpp'
+alias l='ls -lah --color=auto'
+alias py='python3'
+alias i3lock='i3lock --image=/home/mina/.config/lock.png'
+# Please someone tell me you the joke :D
+alias dog='tac'
+# Help!
+alias HELP='echo Stay calm, you can do this ${USER}!'
+#alias emergeUpdate='emerge -av --update --deep --newuse @world'
+#alias esearch='sudo emerge --search'
+#alias showpackages="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias s='sudo'
+alias please='sudo "$BASH" -c "$(history -p !!)"'
+# Hibernate
+#alias hibernate='sudo -i "echo disk > /sys/power/state"'
+# Ask before removing,copying and moving files
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+# Readable formats for the command outputs
+alias df='df -h'
+alias du='du -h'
+alias free='free -m'
+# This is just for fun :D Try typing hello in bash
+alias hello='echo Hello ${USER}!'
+# Readd the background
+alias Wallpaper='feh --bg-fill /home/mina/.config/background.jpg'
+# Get weather status
+alias weather-status='curl wttr.in'
+# Flatpak spotify
+alias spotify='flatpak run com.spotify.Client'
+# Open Surf with tabbed
+alias surftabbed='tabbed surf -e'
+
+# Reload the colors if needed!
+alias walr='wal -r'
+
+# FreeDOS vm
+alias FreeDos='sudo qemu-system-x86_64 -hda /home/mina/Downloads/Operating_Systems/FreeDos.img \
+	-hdb /home/mina/Downloads/Operating_Systems/FreeDos1.2/FD12FULL.img \
+	-m 256 \
+	-smp 1 \
+	-cpu host -smp cores=1,threads=1,sockets=1   \
+	-enable-kvm -vga std -nic user,smb=/home/mina'
+
+# For qemu NBD drives
+alias LoadNBD='sudo modprobe nbd max_part=63'
+alias MountNBD='sudo qemu-nbd -c /dev/nbd0'
+alias RemoveNBD='qemu-nbd -d /dev/nbd0'

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# This is a status Bar Meant to be used with DWM 
+# It was not tested on ANYTHING else and i doubt it will work on anything else
+# Note that it will only work on my laptop as ofc the 
+
+# Seperator 
+sep="|"
+
+# Loops around so it refreshs variables 
+while true
+do
+
+# Variables that will place in them volume and Mem for example to be outputted
+
+	# Sound level
+	sound=$(amixer get Master | awk '/Right/ { print $5 }' | tr -d "\n-")
+
+	# How Much free memorey is there
+	Mem=$(free -h | awk '/Mem:/ { print $3 "/" $2 }')
+
+	# Current Cpu Usage
+	CPU_USAGE=$(mpstat | awk '{if(NR==4) print 100 - $13 }')
+
+	# Cpu Heat
+	Heat=$(sensors | awk '{ if(NR==15) print $4 }' | tr -d '+')
+
+	# get Ip address 
+	function ip_Address(){
+
+	# Grab the state of the ethernet 
+	CON=$(ip link | awk '{ if(NR==3 || NR==5) print $9 }' | tr -d '\n')
+
+	if [ $CON == "DOWNDOWN" ]
+	then
+		IP="Wifi/Ethernet Not Connected"
+	elif [ $CON == "DOWNUP" ]
+	then
+		# Ip address for wifi (to do: add the SSID next to the ip address )
+		IP=$(ifconfig | awk '{ if(NR==18) print $2 }')
+	else 
+		# Ip address of ethernet 
+		IP=$(ifconfig | awk '{ if(NR==2) print $2 }')
+	fi 
+	}
+
+	# Now we use the function to get the ip address! 
+	ip_Address
+
+	# Battery Level 
+	BAT=$(acpi --details | awk '{{ gsub(","," ") } if(NR==1) print $3 " " $4 " " $5 }')
+
+	# Playing Music or not 
+	Play_Or_Not=$(mpc status | awk '{ if(NR==2) print $1 }' | tr -d '[]')
+
+	# The thingy that outputs xd 
+	xsetroot -name " $Play_Or_Not $sep $Heat $sep ${CPU_USAGE}% $sep $Mem $sep $IP $sep $sound $sep $BAT $sep $(date --utc)" 
+	sleep 1
+done

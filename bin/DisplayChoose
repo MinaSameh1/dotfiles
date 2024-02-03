@@ -1,0 +1,12 @@
+#!/bin/sh
+
+choices="laptop\nlaptopdual\nHDMIdualmain\nHDMI\nManual"
+choice=$(echo -e "$choices" | dmenu -i )
+
+case "$choice" in 
+	laptop) xrandr --output DP-4 --auto --primary --output HDMI-0 --off && feh --bg-fill /home/mina/.config/background.jpg;;
+	laptopdual) xrandr --output DP-4 --auto --output HDMI-0 --auto && feh --bg-fill /home/mina/.config/background.jpg;;
+	HDMI) xrandr --output HDMI-0 --auto --primary --output DP-4 --off && feh --bg-fill /home/mina/.config/background.jpg;;
+	HDMIdualmain) xrandr --output HDMI-0 --auto --primary --left-of DP-4 --output DP-4 --auto && feh --bg-fill /home/mina/.config/background.jpg;;
+	Manual) arandr ;;
+esac

@@ -1,0 +1,13 @@
+# Keep this file for future reference
+[Unit]
+Description=Run Dynamic dns every 10 mins
+
+[Timer]
+OnBootSec=0min
+OnCalendar=*:0/10
+Unit = dynamicDns.service
+# OnUnitActiveSec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

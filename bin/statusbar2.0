@@ -1,0 +1,35 @@
+#!/bin/sh
+# This is a script to show me PC stats :D
+
+# The Seperator that will be used between the stats
+sep="|"
+
+while true ; do
+	Sound=$(amixer get Master | awk '{ if(NR==7) print $5 }')
+	Mem=$(free -h | awk '{ if(NR==2) print $3 "/" $2 }')
+
+	Get_Ip_Addr() {
+		# Get state of wifi and ethernet
+		CONNECTION=$(ip link | awk '/DOWN/ { print $9 }' | tr -d "\n")
+		if [ "$CONNECTION" = "DOWNDOWNDOWN" ] 
+		then 
+			CON_STATE="Ethernet/wifi not connected"
+		elif [ "$CONNECTION" = "DOWNUP" ] 
+		then 
+			CON_STATE=$(ip a | awk '{ if(NR==8) print $2 }')
+		elif [ "$CONNECTION" = "UPDOWN" ] 
+		then
+			CON_STATE=$(ip a | awk '{ if(NR==12) print $2 }')
+		elif [ "$CONNECTION" = "UPUP" ]
+		then
+			CON_STATE="both wifi and eth are working"
+		else 
+			CON_STATE="Something went wrong"
+		fi
+	}
+
+	Get_Ip_Addr
+
+	xsetroot -name "$sep $Mem $sep $CON_STATE $sep $Sound $sep $(date)"
+	sleep 1
+done

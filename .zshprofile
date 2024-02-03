@@ -1,0 +1,54 @@
+#
+# ~/.zshprofile
+#
+
+# Some variables
+export PATH=$PATH:/home/mina/bin/:/home/mina/Downloads/Work/android-studio/bin:/home/mina/.local/bin:/home/mina/.local/share/gem/ruby/3.0.0/bin
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
+export BROWSER=surf
+export EDITOR="/bin/nvim"
+# Some dir vars to make life easier for me :D
+export GIT=/home/mina/Documents/stuff/git
+export DOTF=/home/mina/Documents/stuff/git/dotfiles
+export SUDO_ASKPASS=/home/mina/bin/dmenu_pass
+
+# upon entering TTY 1 and Xorg is not running then launch it
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $(pgrep -i xorg) ]] ; then
+	startx .xinitrc
+fi
+
+
+#export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# opam configuration for ocaml (Unused)
+# test -r /home/mina/.opam/opam-init/init.sh &&
+#     . /home/mina/.opam/opam-init/init.sh > /dev/null 2> /dev/null ||
+#     true
+
+
+# Starts ssh-agent
+SSH_ENV="$HOME/.ssh/agent-environment"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
+
+. ~/.profile

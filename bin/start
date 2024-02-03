@@ -1,0 +1,12 @@
+#!/bin/sh
+
+nohup postman & disown
+nohup ~/Applications/nosqlbooster4mongo-8.0.15.AppImage & disown
+nohup slack & disown
+
+sleep 10 && firefox-developer-edition & disown
+sleep 15 && firefox-developer-edition -private-window & disown
+
+# open new tab in kitty
+kitty @ new-window --title "nvim" --directory ~/Documents/work/backend --hold
+ranger

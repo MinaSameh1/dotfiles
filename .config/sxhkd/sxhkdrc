@@ -1,0 +1,72 @@
+#      ___           ___           ___           ___          _____
+#     /  /\         /__/|         /__/\         /__/|        /  /::\ 
+#    /  /:/_       |  |:|         \  \:\       |  |:|       /  /:/\:\ 
+#   /  /:/ /\      |  |:|          \__\:\      |  |:|      /  /:/  \:\  
+#  /  /:/ /::\   __|__|:|      ___ /  /::\   __|  |:|     /__/:/ \__\:|
+# /__/:/ /:/\:\ /__/::::\____ /__/\  /:/\:\ /__/\_|:|____ \  \:\ /  /:/
+# \  \:\/:/~/:/    ~\~~\::::/ \  \:\/:/__\/ \  \:\/:::::/  \  \:\  /:/
+#  \  \::/ /:/      |~~|:|~~   \  \::/       \  \::/~~~~    \  \:\/:/
+#   \__\/ /:/       |  |:|      \  \:\        \  \:\         \  \::/
+#     /__/:/        |  |:|       \  \:\        \  \:\         \__\/  
+#     \__\/         |__|/         \__\/         \__\/
+
+
+## Launch Terminal (Already done by my window manager)
+#super + Return
+#	st
+## Launch backup terminal
+super + shift + Return
+	urxvt
+## Launch Dmenu
+super + d
+	dmenu_run
+## Lanuch Browser
+#super + q
+#	qutebrowser
+## Control the volume
+super + {comma,period}
+	amixer set Master -q {5%-,5%+} 
+## Next or prev 
+alt + {comma,period}
+	mpc {prev,next} && playingnow 
+XF86AudioNext
+	mpc next
+XF86AudioPrev 
+	mpc prev
+## Reload Sxhkd
+super + shift + c 
+	pkill -SIGUSR1 sxhkd
+## Open My File manager
+super + shift + f
+	caja
+## Mute the volume
+super + m
+	amixer set Master toggle
+	#$psst pactl set-sink-mute @DEFAULT_SINK@ toggle $update
+## Screen backlight control
+alt + shift + {j,k}
+	xbacklight {-,+}5
+## Volume control
+XF86AudioLowerVolume 
+	amixer set Master -q 5%-
+XF86AudioRaiseVolume
+	amixer set Master -q 5%+
+XF86AudioMute       
+	amixer set Master toggle
+## Toggle music 
+XF86Launch3
+	mpc toggle
+XF86AudioPlay
+	mpc toggle
+XF86AudioStop
+	mpd --kill
+## ScreenShot!
+Print
+	mate-screenshot
+XF86WebCam
+	mate-screenshot
+## Wifi connection
+XF86Launch7
+	WIFI
+XF86RFKill	
+	blueman-manager

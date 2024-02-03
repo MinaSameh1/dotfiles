@@ -1,0 +1,30 @@
+! My modifications 
+
+
+ URxvt.allow_bold:           true
+
+! Fix font space
+! URxvt*letterSpace: 0
+
+
+! Scrollbar
+! Don't like scroll bars that much
+ URxvt.scrollStyle:          rxvt
+ URxvt.scrollBar:            false
+! Shifting up and down 
+! Doesn't work for some reason, and since urxvt isn't my main terminal too lazy to fix
+ URxvt.keysym.Shift-Up:   command:\033]720;1\007
+ URxvt.keysym.Shift-Down: command:\033]721;1\007
+! URxvt*scrollTtyOutput:   false
+ URxvt*scrollWithBuffer:  true
+ URxvt*scrollTtyKeypress: true
+! URxvt.font: xft:Inconsolata:size=10
+ URxvt.font: xft:Inconsolata:pixelsize=21:antialias=true:autohint=true
+ URxvt.letterSpace: -1
+
+! Cursor
+ URxvt.cursorBlink:          true
+!URxvt.cursorColor:          #C84F1F
+ Urxvt.cursorColor:	     #C8921F
+! makes the cursor look like _ 
+ URxvt.cursorUnderline:      true

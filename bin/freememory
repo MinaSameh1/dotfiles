@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# This is a bash script to show me the Mem used and cpu usage
+
+Mem=$(free -h | awk '/Mem:/ { print $3 "/" $2 }')
+
+Heat=$(sensors | awk '{ if(NR==15) print $4 }' | tr -d '+')
+
+CPU_USAGE=$(mpstat | awk '{if(NR==4) print 100 - $13 }')
+
+notify-send -t 5000 "Free memory is" "$Mem" --icon=dialog-information
+notify-send -t 5000 "Core heat is" "$Heat " --icon=dialog-information
+notify-send -t 5000 "Cpu usage is ${CPU_USAGE}%" --icon=dialog-information

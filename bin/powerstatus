@@ -1,0 +1,8 @@
+#!/bin/sh
+# vim ft=sh
+while true;
+do
+sleep 1
+TEMP=$(sensors | awk '{ print $3 }' | tr -d '+°C\nadapter')
+xsetroot -name "$TEMP | $(acpi) | $(date)"
+done
